@@ -1,4 +1,5 @@
 
+import java.lang.Math;
 class CalcolatriceScientifica extends Calcolatrice {
 
 	private double base, exp, radicando;
@@ -115,7 +116,10 @@ class CalcolatriceScientifica extends Calcolatrice {
 	public void potenza() {
 
 		System.out.println("\nHai selezionato: POTENZA\n");
-		inserimento(); // --> metodo inserimento() privato che appartiene esclusivamente a CalcolatriceScientifica
+		inserimento();
+		System.out.print(Math.pow(base, exp));
+
+		// --> metodo inserimento() privato che appartiene esclusivamente a CalcolatriceScientifica
 		// setRisultato(); --> NON posso usare il metodo setRisultato() perché è dichiarato private nella classe Calcolatrice. Devo renderlo protected!
 		// salva();  --> NON posso usare il metodo salva() perchè è dichiarato private nella classe Calcolatrice. Devo renderlo protected!
 	}
@@ -142,20 +146,8 @@ class CalcolatriceScientifica extends Calcolatrice {
 		}
 		while(errore == true);
 
-		do {
-			errore = false;
-			try {
-				System.out.print("esponente: ");
-				valoreLetto = tastiera.readLine();
-				exp = Double.parseDouble(valoreLetto);
-			}
-			catch(Exception e) {
-				
-				System.out.println("ERRORE: " + e.getMessage());
-				errore = true;
-			}
-		}
-		while(errore == true);
+		
+		System.out.print(Math.sqrt(base));
 
 	}
 
