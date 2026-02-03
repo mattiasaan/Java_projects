@@ -38,20 +38,20 @@ public class CalcolatriceScientifica extends Calcolatrice {
             }
             if (comando.equals("sqrt") && opzione.equals("--help")) {
                 System.out.println(" ");
-                System.out.println("Sintassi: sqrt [radicando] [stima iniziale] [soglia di accettazione]");
+                System.out.println("Sintassi: sqrt [radicando] [soglia di accettazione]");
                 System.out.println("");
                 System.out.println("Opzioni: non ci sono opzioni al momento.");
                 app();
                 return;
             }
             if (comando.equals("back")) {
-                super.app();
                 return;
             }
 
             if(comando.equals("pow")) {
                 if (argomenti.length < 3) {
                     System.err.println("errore di sintassi comando incompleto");
+                    app();
                 } else {
                     double base = argomenti[1].equalsIgnoreCase("ans") ? ans : Double.parseDouble(argomenti[1]);
                     double esponente = Double.parseDouble(argomenti[2]);
@@ -60,13 +60,14 @@ public class CalcolatriceScientifica extends Calcolatrice {
             }
 
             if(comando.equals("sqrt")) {
-                if (argomenti.length < 4) {
+                if (argomenti.length < 3) {
                     System.err.println("errore di sintassi comando incompleto");
+                    app();
                 } else {
                     double radicando = argomenti[1].equalsIgnoreCase("ans") ? ans : Double.parseDouble(argomenti[1]);
                     double stima = Double.parseDouble(argomenti[2]);
                     double sogliaAccettazione = Double.parseDouble(argomenti[3]);
-                    radiceBabilonese(radicando, stima, sogliaAccettazione);
+                    radiceBabilonese(radicando, sogliaAccettazione);
                 }
             }
 
@@ -121,7 +122,11 @@ public class CalcolatriceScientifica extends Calcolatrice {
 
             if (comando.equals("show")) {
                 for(byte a = 0; a < 5; a++) {
-                    System.out.println(cronologia[a]);
+                    if(cronologia[a] == 0.0) {
+                        System.out.println("vuoto");
+                    } else {
+                        System.out.println(cronologia[a]);
+                    }
                 }
                 history();
             }
@@ -180,7 +185,31 @@ public class CalcolatriceScientifica extends Calcolatrice {
         return;
     }
 
-    private void radiceBabilonese(double a, double b, double c) {
-
+    private void radiceBabilonese(double a, double b) {
+        double confronto = 0.0;
+        double iterazione = 0.0;
+        byte contatore = 0;
+        double secondaIterazione = 0.0;
+        
+        do {
+            iterazione = a / 2;
+            secondaIterazione = (0.5f) * (iterazione + (a / iterazione));
+            confronto = Math.abs(secondaIterazione - iterazione);
+            System.out.println("calcolo: " + secondaIterazione + " || ciclo n: " + contatore);
+            contatore++;
+            iterazione = secondaIterazione;
+        } while (confronto > b);
+        System.out.println("risultato: " + secondaIterazione + " soglia: " + confronto);
+                if (posizione < 5) {
+            cronologia[posizione] = secondaIterazione;
+            posizione++;
+        }
+        else {
+            posizione = 0;
+            cronologia[posizione] = secondaIterazione;
+            posizione++;
+        }
+        app();
+        return;
     }
 }

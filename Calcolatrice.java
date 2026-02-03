@@ -1,6 +1,9 @@
 import java.io.*;
 
-public class Calcolatrice extends AppCalcolatrice {
+public class Calcolatrice {
+    protected InputStreamReader i = new InputStreamReader(System.in);
+    protected BufferedReader tastiera = new BufferedReader(i);
+    protected String testoLetto = "";
     protected String[] args = new String[3];
     protected double[] cronologia = new double[5];
     protected byte posizione = 0;
@@ -10,7 +13,7 @@ public class Calcolatrice extends AppCalcolatrice {
     protected double num2 = 0.0;
     protected double ans = 0.0;
 
-    @Override
+
     public void app() {
         try {
             System.out.print("User/calc$ ");
@@ -79,7 +82,6 @@ public class Calcolatrice extends AppCalcolatrice {
             }
 
             if (comando.equals("back")) {
-                super.app();
                 return;
             }
 
@@ -127,7 +129,6 @@ public class Calcolatrice extends AppCalcolatrice {
         }
     }
 
-    @Override
     protected void help() {
         System.out.println("ADDICTION     Permette di eseguire la somma tra due numeri");
         System.out.println("DIFFERENCE    Permette di eseguire la differenza tra due numeri");
@@ -266,7 +267,11 @@ public class Calcolatrice extends AppCalcolatrice {
 
             if (comando.equals("show")) {
                 for(byte a = 0; a < 5; a++) {
-                    System.out.println(cronologia[a]);
+                    if(cronologia[a] == 0.0) {
+                        System.out.println("vuoto");
+                    } else {
+                        System.out.println(cronologia[a]);
+                    }
                 }
                 history();
             }

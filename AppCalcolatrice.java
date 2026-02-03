@@ -40,9 +40,11 @@ public class AppCalcolatrice {
             }
             else if (testoLetto.equals("calc")) {
                 calcolatrice.app();
+                app();
             }
             else if (testoLetto.equals("scalc")) {
                 clacs.app();
+                app();
             }
             else if(testoLetto.equals("exit")) {
                 System.exit(0);
