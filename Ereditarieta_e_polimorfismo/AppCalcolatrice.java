@@ -16,7 +16,7 @@ public class AppCalcolatrice {
 			int operazione= 0;
 
 
-			System.out.print("menu principale calcolatrice: \n 1)calcolatrice normale. \n 2)calcolatrice scentifica. \n cosa scegli: ");
+			System.out.print("menu principale calcolatrice: \n 1)calcolatrice normale. \n 2)calcolatrice scentifica. \n ctrl + c per uscire. \n cosa scegli: ");
 			try {
 				valoreLetto = tastiera.readLine();
 				scelta = Integer.parseInt(valoreLetto);
