@@ -3,7 +3,7 @@ class MessageBuffer {
     private boolean empty = true;
 
     public synchronized void put(String msg) {
-        while (empty == false) {
+        while (!empty) {
             try { wait(); } catch(InterruptedException e) {}
         }
         empty = false;
@@ -12,7 +12,7 @@ class MessageBuffer {
     }
 
     public synchronized String take() {
-        while(empty == true) {
+        while(empty) {
             try { wait(); } catch (InterruptedException e) {}
         }
         empty = true;

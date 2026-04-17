@@ -4,7 +4,7 @@ class ResourcePool {
     public ResourcePool(int total) { this.availableResources = total; }
 
     public synchronized void acquire() {
-        while(availableResources == 0) {
+        while(availableResources <= 0) {
             try { wait(); } catch (InterruptedException e) {}
         }
         availableResources--;
