@@ -1,4 +1,3 @@
-package calcolatrice_brutta;
 import java.io.*;
 
 public class CalcolatriceScientifica extends Calcolatrice {
