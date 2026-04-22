@@ -94,5 +94,6 @@ public class App {
     private String formattaRisultato(double d) {
         if (d == (long) d) return String.format("%d", (long) d);
         return String.format("%.2f", d).replace(",", ".");
+        
     }
 }
