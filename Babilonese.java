@@ -1,7 +1,7 @@
 import java.io.*;
 
 class Babilonese {
-  public static void main(String args[]) throws IOException {
+  public static void main(String[] args) throws IOException {
     InputStreamReader input = new InputStreamReader(System.in);
 		BufferedReader tastiera = new BufferedReader(input);
 
