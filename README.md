@@ -53,16 +53,6 @@ Java_projects/
 │   └── indovina_numero/         # Gioco "indovina il numero" GUI
 │       └── IndovinaNumero.java
 │
-├── GUIBuilder/                  # Template per finestre custom con tema scuro
-│   ├── WindowBuilder.java
-│   ├── helper_classes/
-│   │   ├── CustomFontLoader.java
-│   │   ├── OnClickEventHelper.java
-│   │   ├── OnFocusEventHelper.java
-│   │   └── RoundedBorder.java
-│   └── resources/fonts/
-│       ├── Lato.ttf
-│       └── Lexend.ttf
 │
 └── Monitor/                     # Esercizi su concorrenza e thread safety
     ├── Counter.java
@@ -311,26 +301,6 @@ java Main
 cd GUI/indovina_numero
 javac IndovinaNumero.java
 java IndovinaNumero
-```
-
----
-
-## GUIBuilder
-
-**Consegna:** Creare un template riutilizzabile per costruire finestre Swing con aspetto personalizzato (tema scuro, font TTF personalizzato, bordi arrotondati, effetto pressione sui pulsanti). Le classi helper in `helper_classes/` incapsulano comportamenti riusabili:
-
-| Classe | Funzione |
-|--------|----------|
-| `CustomFontLoader` | Carica font `.ttf` da file; fallback su Arial se non trovato |
-| `OnClickEventHelper` | Cambia colore di sfondo del pulsante al click e ripristina al rilascio |
-| `OnFocusEventHelper` | Gestisce il testo placeholder nei campi di testo |
-| `RoundedBorder` | Implementazione custom di `Border` con angoli arrotondati e spessore configurabile |
-
-**Compilazione ed esecuzione:**
-```sh
-cd GUIBuilder
-javac -cp . helper_classes/*.java WindowBuilder.java
-java WindowBuilder
 ```
 
 ---
